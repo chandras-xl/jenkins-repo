@@ -39,10 +39,8 @@ pipeline{
           string(name: "ENVIRONMENT", defaultValue: "PROD", description: "Deploy to?")
         }
       }
-      stage{
-        steps{
-          echo "Deploy version ${env.RELEAS_VER} onto ${ENVIRONMENT} environment"
-        }
+      steps{
+        echo "Deploy version ${env.RELEAS_VER} onto ${ENVIRONMENT} environment"
       }
     }
   }

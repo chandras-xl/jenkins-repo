@@ -28,7 +28,7 @@ pipeline {
         }
       }
       steps{
-        echo "Deploying the release ${env.RELEASE} on ${param.TARGET_ENV}"
+        echo "Deploying the release ${env.RELEASE} on ${TARGET_ENV}"
       }
     }
   }

@@ -1,40 +1,56 @@
-pipeline {
+pipeline{
   agent any
   environment{
-    RELEASE = "2.0"
+    RELEASE_VER = "2.0"
   }
   stages{
     stage("Build"){
-      agent any
       environment{
         LOG_LEVEL = "INFO"
-      }      
+      }
       steps{
-        echo "The is a build stage"
-        echo "The build number ${env.BUILD_ID} build version ${env.RELEASE} and log leve ${env.LOG_LEVEL}"
+        parallel{
+          stage("linux-arm64"){
+            steps{
+              echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
+            }
+          }
+          stage("linux-amd64"){
+            steps{
+              echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
+            }
+          }
+          stage("windows-amd64"){
+            steps{
+              echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
+            }
+          }
+        }
       }
     }
     stage("Test"){
       steps{
-        echo "This is testing phase"
+        echo "Performing testing for product version ${env.RELEASE_VER}"
       }
     }
     stage("Deploy"){
-      input {
+      input{
         message 'Deploy?'
-        ok "Do it!"
+        ok 'Do it!'
         parameters{
-          string(name: "TARGET_ENV", defaultValue: "DEV", description: "Target deployment environment")
+          string(name: "ENVIRONMENT", defaultValue: "PROD", description: "Deploy to?")
         }
       }
-      steps{
-        echo "Deploying the release ${env.RELEASE} on ${TARGET_ENV}"
+      stage{
+        steps{
+          echo "Deploy version ${env.RELEAS_VER} onto ${ENVIRONMENT} environment"
+        }
       }
     }
   }
   post{
     always{
-      echo "I always execute irrespective of success or failure"
+      echo "I run always irrespective of success or failure"
     }
   }
 }

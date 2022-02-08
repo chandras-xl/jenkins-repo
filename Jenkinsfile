@@ -1,14 +1,16 @@
-pipeline {
+pipeline{
   agent any
-  stages {
-    stage('stage1') {
-      steps {
-        echo "The Build number is $BUILD_ID and the value of env DATA is $DATA"
+
+  stages{
+    stage("Stage1"){
+      steps{
+        echo "This is stage one"
       }
     }
-
-  }
-  environment {
-    DATA = '100'
+    stage("stage2"){
+      steps{
+        echo "This is stage2"
+      }
+    }
   }
 }

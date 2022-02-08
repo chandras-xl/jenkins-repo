@@ -4,10 +4,11 @@ pipeline {
     RELEASE = "2.0"
   }
   stages{
-    environment{
-      LOG_LEVEL = "INFO"
-    }
     stage("Build"){
+      agent any
+      environment{
+        LOG_LEVEL = "INFO"
+      }      
       steps{
         echo "The is a build stage"
         echo "The build number ${env.BUILD_ID} build version ${env.RELEASE} and log leve ${env.LOG_LEVEL}"

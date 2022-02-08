@@ -8,22 +8,20 @@ pipeline{
       environment{
         LOG_LEVEL = "INFO"
       }
-      steps{
-        parallel{
-          stage("linux-arm64"){
-            steps{
-              echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
-            }
+      parallel{
+        stage("linux-arm64"){
+          steps{
+            echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
           }
-          stage("linux-amd64"){
-            steps{
-              echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
-            }
+        }
+        stage("linux-amd64"){
+          steps{
+            echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
           }
-          stage("windows-amd64"){
-            steps{
-              echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
-            }
+        }
+        stage("windows-amd64"){
+          steps{
+            echo "Building release version ${env.RELEASE_VER} for ${env.STAGE_NAME} with log level of ${env.LOG_LEVEL}..."
           }
         }
       }

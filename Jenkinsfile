@@ -1,7 +1,7 @@
 pipeline{
   agent any
   environment{
-    RELEASE_VER = 1.0.0
+    RELEASE_VER = "1.0.0"
   }
 
   stages{

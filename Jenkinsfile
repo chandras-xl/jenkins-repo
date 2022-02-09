@@ -22,9 +22,9 @@ pipeline {
     }
     stage('Selected choices'){
       steps{
-        echo "Product: ${param.PRODUCT}"
-        echo "PLATFORM: ${param.PLATFORM}"
-        echo "INSTALL: ${param.INSTALL}"
+        echo "Product: ${params.PRODUCT}"
+        echo "PLATFORM: ${params.PLATFORM}"
+        echo "INSTALL: ${params.INSTALL}"
       }
     }
     stage("Version"){

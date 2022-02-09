@@ -49,6 +49,6 @@ pipeline {
   }
 }
 
-void installDependencies(){
+def installDependencies(){
   println("Installing dependencies")
 }

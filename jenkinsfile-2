@@ -9,4 +9,16 @@ pipeline{
             }
         }
     }
+    post{
+        success{
+            slackSend channel: '#jenkinsci',
+                      color: 'good',
+                      message: "Ran on docker agent ${currentBuild.fullDisplayName}"
+        }
+        failure{
+            slackSend channel: '#jenkinsci',
+                      color: 'danger',
+                      message: "Ran on docker agent ${currentBuild.fullDisplayName}"
+        }
+    }
 }

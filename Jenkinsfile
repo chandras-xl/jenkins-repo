@@ -16,7 +16,7 @@ pipeline{
       steps{
         echo "Testing the release ${env.RELEASE}"
         script {
-          if (Math.random() < 1 ){
+          if (5 > 1 ){
               throw new Exception()
           }
         }

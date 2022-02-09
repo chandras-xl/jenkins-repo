@@ -13,18 +13,24 @@ pipeline {
   }
   stages{
     stage('Dependency'){
-      bat '''
-        git --version
-        aws --version
-      '''
+      steps{
+        bat '''
+          git --version
+          aws --version
+        '''
+      }
     }
     stage('Selected choices'){
-      echo "Product: ${param.PRODUCT}"
-      echo "PLATFORM: ${param.PLATFORM}"
-      echo "INSTALL: ${param.INSTALL}"
+      steps{
+        echo "Product: ${param.PRODUCT}"
+        echo "PLATFORM: ${param.PLATFORM}"
+        echo "INSTALL: ${param.INSTALL}"
+      }
     }
     stage("Version"){
-      echo "Product version: ${env.RELEASE}"
+      steps {
+        echo "Product version: ${env.RELEASE}"
+      }  
     }
   }
   post{

@@ -18,10 +18,10 @@ pipeline{
         writeFile file: "test-results.txt", text: "passed"
       }
     }
+  }
     post{
       success{
         archiveArtifacts 'test-results.txt'
       }
     }
-  }
 }

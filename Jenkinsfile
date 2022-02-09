@@ -10,6 +10,9 @@ pipeline{
       }
       steps{
         echo "Building version ${env.RELEASE} with log ${env.LOG_LEVEL}"
+        // withCredentials([string(credentialsId: 'slack-key', variable: 'SLACKKEY')]) {
+        //   echo "Writing the status to slack"
+        // }
       }
     }
     stage("Test"){
@@ -23,5 +26,7 @@ pipeline{
       success{
         archiveArtifacts 'test-results.txt'
       }
+      slackSend channel: '#jenkinsci',
+                message: "Release ${env.RELEASE}, success: ${env.CurrentBuild.fullDisplayName}."
     }
 }

@@ -1,3 +1,4 @@
+// plugins require to run this pipeline - slack notification
 pipeline {
   agent any
   parameters{

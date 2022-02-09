@@ -25,8 +25,8 @@ pipeline{
     post{
       success{
         archiveArtifacts 'test-results.txt'
+        slackSend channel: '#jenkinsci',
+                  message: "Release ${env.RELEASE}, success: ${env.CurrentBuild.fullDisplayName}."
       }
-      slackSend channel: '#jenkinsci',
-                message: "Release ${env.RELEASE}, success: ${env.CurrentBuild.fullDisplayName}."
     }
 }

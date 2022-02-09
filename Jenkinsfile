@@ -32,7 +32,7 @@ pipeline{
                   message: "Release ${env.RELEASE}, success: ${currentBuild.fullDisplayName}."
       }
       failure{
-        slackSend channel: '#jenkinci',
+        slackSend channel: '#jenkinsci',
                   color: 'danger',
                   message: "Release ${env.RELEASE}, failure: ${currentBuild.fullDisplayName}."
       }

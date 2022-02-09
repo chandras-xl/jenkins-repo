@@ -18,7 +18,9 @@ pipeline {
           git --version
           aws --version
         '''
+        installDependencies()
       }
+      
     }
     stage('Selected choices'){
       steps{
@@ -45,4 +47,8 @@ pipeline {
                 message: "Release ${env.RELEASE}, failure: ${currentBuild.fullDisplayName}"
     }
   }
+}
+
+void installDependencies(){
+  println("Installing dependencies")
 }

@@ -15,12 +15,12 @@ pipeline{
         success{
             slackSend channel: '#jenkinsci',
                       color: 'good',
-                      message: "Ran on docker agent ${currentBuild.fullDisplayName}"
+                      message: "Successfully ran the job ${currentBuild.fullDisplayName} on docker agent"
         }
         failure{
             slackSend channel: '#jenkinsci',
                       color: 'danger',
-                      message: "Ran on docker agent ${currentBuild.fullDisplayName}"
+                      message: "Failed to run the job ${currentBuild.fullDisplayName} on docker agent"
         }
     }
 }

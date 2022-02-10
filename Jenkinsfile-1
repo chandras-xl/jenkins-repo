@@ -15,9 +15,9 @@ pipeline {
   stages{
     stage('Dependency'){
       steps{
-        bat '''
+        sh '''
           git --version
-          aws --version
+          mvn --version
         '''
         installDependencies()
       }

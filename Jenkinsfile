@@ -6,10 +6,10 @@ pipeline{
     stages{
         stage('Git checkout'){
             steps{
-                gitCheckout {
+                gitCheckout (
                     branch: "master",
                     url: "https://github.com/chandras-xl/jenkins-repo.git"
-                }
+                )
             }
         }
     }

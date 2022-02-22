@@ -1,0 +1,6 @@
+#!groovy
+@Library(shared-library@master)
+
+import displayMessage
+
+displayMessage('Welcome to Jenkins!')

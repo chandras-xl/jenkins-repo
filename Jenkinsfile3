@@ -1,5 +1,5 @@
 #!groovy
-@Library(shared-library@master)
+@Library('shared-library@master')
 
 import displayMessage
 
